@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  hazarder-apache:
+    image: nette_master:latest
+    container_name: nette
+    networks:
+      - nginxdb_proxy
+    volumes:
+      - .:/var/www/html
+    command: /var/www/html/init-master.sh
+    restart: always
+    expose:
+      - 80
+    environment:
+      - VIRTUAL_HOST=nette.local
+      - TZ=Europe/Vienna
+
+networks:
+  nginxdb_proxy:
+    external: true

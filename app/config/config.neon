@@ -1,0 +1,19 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+session:
+	expiration: 14 days
+
+extensions:
+    sentry: iNviNho\SentryExtension
+
+
+
+
+services:
+	router: App\RouterFactory::createRouter
