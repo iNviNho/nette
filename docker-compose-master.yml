@@ -1,11 +1,12 @@
 version: '3'
 
 services:
-  hazarder-apache:
+  nette_apache:
     image: nette_master:latest
-    container_name: nette
+    container_name: nette_apache
     networks:
       - nginxdb_proxy
+      - graylog_default
     volumes:
       - .:/var/www/html
     command: /var/www/html/init-master.sh
@@ -17,5 +18,7 @@ services:
       - TZ=Europe/Vienna
 
 networks:
+  graylog_default:
+    external: true
   nginxdb_proxy:
     external: true
